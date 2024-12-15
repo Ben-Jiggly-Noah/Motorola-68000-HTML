@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorola 68000 Architecture</title>
+
+    <style>
+        h3 {
+            color: rgb(220, 83, 20);
+            font-weight: 500;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h4 {
+            color: rgb(220, 83, 20);
+            font-weight: 500;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        p {
+            font-weight: 400;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: smaller;
+            width: 1000px;
+        }
+        a {
+            color: black;
+            font-weight: 400;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: xx-small;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-radius: 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #d8d8d8;
+        }
+    </style>
+</head>
+<body>
+    <h3>Registers</h3>
+    <p>The Motorola 86000 has 16 total registers. 8 of them are 32-bit, can be used to transfer data around and to do arithmatic operations (D0-D7). The other 8 registers are address registers (A0-A7).
+        A7 is a bit different, for it is the stack pointer (SP). You can use the label 'SP' or just A7, but they're the same, so it doesn't matter. When the microcontroller is interupted, it saves registers D0-D7 and A0-A6.
+        In supervisor mode, when the Motorola 86000 is interupted, A7 is saved too. Now, you may wonder what address registers do. They hold the address of a part in memory, being able to be used in instructions like this: (A0) that is equal to the part in RAM. So, to load something to RAM, you'll move the address into an address register, and move the value into the (address register).
+    </p>
+
+    <table>
+        <tr>
+            <th>D0-D7</th>
+            <td>32-bit</td>
+            <td>General Purpose</td>
+        </tr>
+        <tr>
+            <th>A0-A6</th>
+            <td>32-bit</td>
+            <td>Address</td>
+        </tr>
+        <tr>
+            <th>A7</th>
+            <td>32-bit</td>
+            <td>Stack Pointer</td>
+        </tr>
+    </table>
+
+
+    <br><br><br><br><br>
+
+
+    <p>Since we talked about the SP earlier and how it was a label, we'll be talking about other ones. The PC (Program Counter) is set to the current instruction the program is reading. There's also the status register (SR), which stores the status of recent arithmatic, logical or comparable instructions.
+        The status register is 16-bit, but only the first 8 bits is accessible by the user. But in supervisor mode, the entire 16 bits are accessible. By the way, the status register is unable to directly be used by the user. Instead, conditional instructions read the status register and decide whether to jump or not to jump.
+    </p>
+
+    <table>
+        <tr>
+            <th>15</th>
+            <th>14</th>
+            <th>13</th>
+            <th>12</th>
+            <th>11</th>
+            <th>10</th>
+            <th>9</th>
+            <th>8</th>
+            <th>7</th>
+            <th>6</th>
+            <th>5</th>
+            <th>4</th>
+            <th>3</th>
+            <th>2</th>
+            <th>1</th>
+            <th>0</th>
+        </tr>
+        <tr>
+            <td>T1</td>
+            <td>T0</td>
+            <td>S</td>
+            <td>M</td>
+            <td>O</td>
+            <td>I2</td>
+            <td>I1</td>
+            <td>I0</td>
+            <td>O</td>
+            <td>O</td>
+            <td>O</td>
+            <td>X</td>
+            <td>N</td>
+            <td>Z</td>
+            <td>V</td>
+            <td>C</td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <a href="index.html">Return to Table of Contents</a>
+</body>
+</html>
